@@ -1,0 +1,90 @@
+<div id="flowsModal" class="modal fade floating-window">
+    <div class="modal-dialog">
+        <div class="modal-content med3d-modal">
+
+            <div class="modal-header med3d-modal-header">
+                <img class="navbar-image" src="assets/img/med3D-icon.png" width="24" height="24">
+                <button type="button" class="med3d-close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Select inlet flow</h4>
+            </div>
+
+            <div class="modal-body" style="padding: 5px;">
+                <div class="panel with-nav-tabs panel-default" style="margin-bottom: 5px;">
+                    <div class="panel-heading">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#fileTab" data-toggle="tab">File</a></li>
+                            <li><a href="#createTab" data-toggle="tab">Steady</a></li>
+                        </ul>
+                    </div>
+                    <div class="panel-body">
+                        <div class="tab-content">
+
+                            <!-- Load flow file tab -->
+                            <div class="tab-pane fade in active" id="fileTab">
+
+                                <div class="tab-pane fade in active">
+                                    <!--<h4 style="padding-left: 0; font-weight: 500">Select .obj model to upload</h4>-->
+                                    <div class="input-group" style="width: 100%; margin-top: 5px;">
+                                        <!--<label>Load .flow/.txt file:</label>-->
+                                        <h4 style="padding-left: 0; font-weight: 500">Load .flow/.txt file</h4>
+
+                                        <label style="font-size: small; font-weight: 600; color: #666;">Load a file containing time-flow values in separate lines.
+                                            Each line starts with a time value, is followed with a space, and ends with a flow value, e.g.:
+                                            "0.012	-82.98492".
+                                            The time values must be in ascending order.</label>
+
+                                        <input id="flowFileInput" type="file" accept=".flow,.txt" class="filestyle">
+                                    </div>
+                                </div>
+
+                                <div style="text-align: right">
+                                    <div class="tooltip-wrapper disabled" data-toggle="tooltip" title="Please select a file." style="display: inline-block; padding-top: 10px;">
+                                        <button id="flowFileOpenButton" type="button" class="btn med3d-btn-primary" disabled="disabled">Load</button>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Create steady flow tab -->
+                            <div class="tab-pane fade" id="createTab">
+                                <h4 style="padding-left: 0; font-weight: 500">Add a new constant flow value</h4>
+
+                                <label style="font-size: small; font-weight: 600; color: #666;">Set a constant flow value to be used at an inlet throughout the entire simulation length.
+                                NOTE: A negative value indicates an inflow (flow flowing into the model), while a positive value indicates an outflow (flow flowing out of the model).</label>
+
+                                <div class="form-group">
+                                    <label for="timeStepSize">Flow rate (cc/sec):</label>
+                                    <input type="number" class="form-control" id="timeStepSize" ng-model="steadyFlowValue" onclick="this.select();">
+                                </div>
+
+                                <button id="addConstantFlowButton" type="button" class="btn med3d-btn-primary" ng-click="addNewSteadyFlow()">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <label style="padding-left: 5px; text-align: left;">Select flow file:</label>
+
+                <div ng-repeat="flowFile in flowFiles" style="margin-bottom: 15px; margin-left: 10px; width: auto;" ng-click="selectFlowFile(flowFile)">
+
+                    <div class="flow-file" ng-class="{'flow-file-selected' : flowFile == selectedFlowFile}">
+                        <button type="button" class="med3d-close" ng-click="removeFlowFile(flowFile)">&times;</button>
+                        <label style="font-size: small; font-weight: 600; color: #000; padding: 5px;">{{flowFile.filename}}</label>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer med3d-modal-footer">
+                <button type="button" class="btn med3d-btn-default" data-dismiss="modal">Close</button>
+
+                <div class="tooltip-wrapper disabled" data-toggle="tooltip" title="Select an existing flow file or add/load a new one." style="display: inline-block">
+                    <button id="setFlowFileButton" type="button" class="btn med3d-btn-primary" disabled="disabled" data-dismiss="modal" ng-click="setCapFlowFile()">Set</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

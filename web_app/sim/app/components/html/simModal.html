@@ -1,0 +1,47 @@
+<div id="simModal" class="modal fade floating-window">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content med3d-modal">
+
+            <div class="modal-header med3d-modal-header">
+                <img class="navbar-image" src="assets/img/med3D-icon.png" width="24" height="24">
+                <button type="button" class="med3d-close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Choose simulation parameters</h4>
+            </div>
+
+            <div class="modal-body" style="padding: 15px;">
+
+                <div class="form-group">
+                    <label for="timeStepSize" style="margin-bottom: 0px">Time step size (s)</label><br>
+                    <label style="font-size: small; font-weight: 600; color: #666;">The size of each simulation time step. The smaller the step, the more accurate the simulation.</label>
+                    <input type="number" class="form-control" id="timeStepSize" ng-model="timeStepSize" onclick="this.select();">
+
+                    <label for="timeSteps" style="margin-bottom: 0px; margin-top: 10px">Number of steps</label><br>
+                    <label style="font-size: small; font-weight: 600; color: #666;">The total number of time steps the simulation takes.</label>
+                    <input type="number" class="form-control" id="timeSteps" ng-model="timeSteps" onclick="this.select();">
+
+                    <label for="restarts" style="margin-bottom: 0px; margin-top: 10px">Time steps between result key frames</label><br>
+                    <label style="font-size: small; font-weight: 600; color: #666;">Specifies the density of time steps where the results are gathered, with 1 meaning results being gathered at every step.</label>
+                    <input type="number" class="form-control" id="restarts" ng-model="restarts" onclick="this.select();">
+
+                    <label for="viscosity" style="margin-bottom: 0px; margin-top: 10px">Blood viscosity</label><br>
+                    <label style="font-size: small; font-weight: 600; color: #666;">Blood viscosity in g · cm^-1 · s^-1</label>
+                    <input type="number" class="form-control" id="viscosity" ng-model="viscosity" onclick="this.select();">
+
+                    <label for="density" style="margin-bottom: 0px; margin-top: 10px">Blood density</label><br>
+                    <label style="font-size: small; font-weight: 600; color: #666;">Blood density in g · cm^-1</label>
+                    <input type="number" class="form-control" id="density" ng-model="density" onclick="this.select();">
+                </div>
+
+            </div>
+
+            <div class="modal-footer med3d-modal-footer">
+                <button type="button" class="btn med3d-btn-default" data-dismiss="modal">Close</button>
+                <div class="tooltip-wrapper disabled" data-toggle="tooltip" title="Every inlet needs to have a flow set." style="display: inline-block">
+                    <button id="simButton" type="button" class="btn med3d-btn-primary" ng-disabled="!hasNeededSimParams" disabled="disabled">Simulate</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

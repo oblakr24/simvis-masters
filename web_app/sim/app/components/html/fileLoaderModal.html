@@ -1,0 +1,75 @@
+<div id="fileLoaderModal" class="modal fade floating-window">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content med3d-modal">
+
+            <div class="modal-header med3d-modal-header">
+                <img class="navbar-image" src="assets/img/med3D-icon.png" width="24" height="24">
+                <button type="button" class="med3d-close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Load model</h4>
+            </div>
+
+            <div class="modal-body" style="padding: 5px;">
+                <div class="panel with-nav-tabs panel-default" style="margin-bottom: 5px;">
+                    <div class="panel-heading">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#localTab" data-toggle="tab">Load .obj</a></li>
+                            <li><a href="#serverTab" data-toggle="tab">Load from server</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="tab-content">
+
+                            <!-- Load local .obj tab -->
+                            <div class="tab-pane fade in active" id="localTab">
+                                <label style="font-size: small; font-weight: 600; color: #666;">Choose a wavefront .obj file of a mesh with open (unfilled) caps.
+                                    Make sure the walls don't contain unwanted holes and unwanted edges. </label>
+
+                                <h4 style="padding-left: 0; font-weight: 500">Select .obj model to upload</h4>
+                                <div class="input-group" style="width: 100%; margin-top: 5px;">
+                                    <label>Select .obj file:</label>
+                                    <input id="objFileInput" type="file" accept=".obj" class="filestyle">
+                                </div>
+                            </div>
+
+                            <!-- Load from server tab -->
+                            <div class="tab-pane fade" id="serverTab">
+                                <h4 ng-hide="existingModels.length === 0" style="padding-left: 0; font-weight: 500">Load existing model</h4>
+
+                                <h4 ng-show="existingModels.length === 0" style="padding-left: 0; font-weight: 500">No saved models</h4>
+
+                                <div style="
+                                    height: 228px;
+                                    padding-bottom: 10px;
+                                    padding-top: 10px;
+                                    overflow-y:scroll;
+                                    overflow-x:hidden;
+                                    ">
+
+                                    <div ng-repeat="model in existingModels" style="margin-bottom: 10px; margin-left: 0px; margin-right: 10px; width: auto;" ng-click="selectModel(model)">
+
+                                        <div class="generic-list-item" ng-class="{'generic-list-item-selected' : model == selectedModel}">
+                                            <button type="button" class="med3d-close" ng-click="removeModel(model)">&times;</button>
+                                            <label style="font-size: small; font-weight: 600; color: #000; padding: 5px;">{{model}}</label>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer med3d-modal-footer">
+                <button type="button" class="btn med3d-btn-default" data-dismiss="modal">Close</button>
+                <div class="tooltip-wrapper disabled" data-toggle="tooltip" title="Please select a model." style="display: inline-block">
+                    <button id="objFileOpenButton" type="button" class="btn med3d-btn-primary" disabled="disabled">Load</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

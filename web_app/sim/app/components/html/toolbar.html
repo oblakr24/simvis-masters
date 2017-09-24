@@ -1,0 +1,52 @@
+<nav class="navbar navbar-inverse navbar-fixed-top hover-div" role="navigation">
+
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+        </button>
+        <a class="navbar-brand" href="#"><img class="navbar-image" src="assets/img/med3D-icon.png" width="24" height="24"></a>
+    </div>
+
+    <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <span class="glyphicon glyphicon-file"></span> Model <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li ng-class="{disabled: false}">
+                        <a ng-attr-data-toggle="{{ false ? '' : 'modal' }}" data-target="#fileLoaderModal">
+                            <span class="glyphicon glyphicon-open"></span> Load model </span>
+                        </a>
+                    </li>
+                    <li ng-class="{disabled: !modelSaveEnabled}"><a ng-click="modelSaveEnabled && saveModel()">Save model</a></li>
+                </ul>
+            </li>
+
+            <li ng-class="{disabled: capInfo.length==0 || visParams.isShowingResults}">
+                <a ng-attr-data-toggle="{{ capInfo.length==0 || visParams.isShowingResults ? '' : 'modal' }}" data-target="#meshingModal">
+                    <span class="glyphicon glyphicon-cog" style="padding-right: 5px"></span> Create mesh </span>
+                </a>
+            </li>
+
+            <li ng-class="{disabled: !hasMesh || visParams.isShowingResults}">
+                <a ng-attr-data-toggle="{{ !hasMesh || visParams.isShowingResults ? '' : 'modal' }}" data-target="#simModal" ng-click="checkSimParams()">
+                    <span class="glyphicon glyphicon-random" style="padding-right: 5px"></span> Simulate </span>
+                </a>
+            </li>
+
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <span class="glyphicon glyphicon-file"></span> Results <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li ng-class="{disabled: false}"><a data-toggle="{{ false ? '' : 'modal' }}" data-target="#resultsModal">Load results</a></li>
+                    <li ng-class="{disabled: !resultsSaveEnabled}"><a data-toggle="{{ false ? '' : 'modal' }}" ng-click="resultsSaveEnabled && saveResults()">Save results</a></li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+
+</nav>

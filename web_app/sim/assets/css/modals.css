@@ -1,0 +1,60 @@
+.item-cap-modal {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    padding-left: 5px;
+    margin-top: 2px;
+    color: #404040;
+}
+
+.flow-file {
+    background-color: #8d8d8d;
+    color: #000;
+    padding: 0px;
+    height: 28px;
+    width: 350px;
+}
+
+.generic-list-item {
+    background-color: #cccccc;
+    color: #000;
+    padding: 0px;
+    height: 28px;
+    width: 100%;
+}
+
+.generic-list-item-gray {
+    background-color: #a6a6a6;
+    color: #000;
+    padding: 0px;
+    height: 28px;
+    width: 100%;
+}
+
+.flow-file-selected {
+    background-color: #337ab7;
+}
+
+.generic-list-item-selected {
+    background-color: #337ab7;
+}
+
+.loader-icon {
+    display:inline-block;
+    font-size: 40px;
+    line-height: 50px;
+    color:white;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    vertical-align: bottom;
+}
+
+.loader-text {
+    display:inline-block;
+    font-size: 16px;
+    line-height: 50px;
+    color:white;
+    text-align: center;
+    vertical-align: bottom;
+}

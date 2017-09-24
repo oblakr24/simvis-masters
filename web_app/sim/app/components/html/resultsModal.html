@@ -1,0 +1,49 @@
+<div id="resultsModal" class="modal fade floating-window">
+    <div class="modal-dialog">
+
+        <div class="modal-content med3d-modal">
+
+            <div class="modal-header med3d-modal-header">
+                <img class="navbar-image" src="assets/img/med3D-icon.png" width="24" height="24">
+                <button type="button" class="med3d-close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Load simulation results</h4>
+            </div>
+
+            <div class="modal-body" style="padding: 15px; height: 300px;">
+
+                <label ng-hide="existingResults.length === 0">Existing results:</label>
+
+                <label ng-show="existingResults.length === 0">No saved results available</label>
+
+                <div style="
+                    height: 250px;
+                    padding-bottom: 10px;
+                    overflow-y:scroll;
+                    overflow-x:hidden;
+                    ">
+
+                    <div ng-repeat="results in existingResults" style="margin-bottom: 15px; margin-left: 0px; padding-right: 10px; width: auto;" ng-click="selectResults(results)">
+
+                        <div class="generic-list-item-gray" ng-class="{'generic-list-item-selected' : results == selectedResults}">
+                            <button type="button" class="med3d-close" ng-click="removeResults(results)">&times;</button>
+                            <label style="font-size: small; font-weight: 600; color: #000; padding: 5px;">{{results.dir}}</label>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer med3d-modal-footer">
+                <button type="button" class="btn med3d-btn-default" data-dismiss="modal">Close</button>
+
+                <div class="tooltip-wrapper disabled" data-toggle="tooltip" title="Select a results file." style="display: inline-block">
+                    <button id="loadResultsButton" type="button" class="btn med3d-btn-primary" ng-disabled="selectedResults === null" disabled="disabled">Load</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

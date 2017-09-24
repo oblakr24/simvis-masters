@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<!-- build:js scripts/main.js -->
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<!--CSS-->
+	<script src="assets/lib/jquery.min.js"></script>
+	<script src="assets/lib/jquery-ui.min.js"></script>
+	<script src="assets/lib/bootstrap.min.js"></script>
+	<script src="assets/lib/angular.min.js"></script>
+	<script src="assets/lib/angular-animate.min.js"></script>
+	<script src="assets/lib/angular-long-press.min.js"></script>
+	<script src="assets/lib/rzslider.min.js"></script>
+	<script src="assets/lib/ng-file-upload-shim.min.js"></script>
+	<script src="assets/lib/ng-file-upload.min.js"></script>
+
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="assets/css/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="assets/css/font-awesome.min.css" rel="stylesheet">
+	<link href="assets/css/bootstrap-social.css" rel="stylesheet">
+	<link href="assets/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+	<link href="assets/css/sim.css" rel="stylesheet">
+	<link href="assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+	<link href="assets/css/bootstrap-social.css" rel="stylesheet">
+	<link href="assets/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+	<link href="assets/lib/rzslider.min.css" rel="stylesheet"/>
+	<link href="assets/css/sidebar.css" rel="stylesheet">
+	<link href="assets/css/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+	<link href="assets/css/modals.css" rel="stylesheet">
+	<link href="assets/css/slider.css" rel="stylesheet">
+
+
+	<!--Libraries-->
+	<script src="scripts/three.min.js"></script>
+	<script src="assets/lib/bootstrap-filestyle.min.js"></script>
+	<script src="assets/lib/clipboard.min.js"></script>
+	<script src="assets/lib/sidebar.js"></script>
+	<script src="assets/lib/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script src="assets/lib/bootstrap-colorpicker.min.js"></script>
+	<!-- endbuild -->
+
+	<!-- Project -->
+	<script src="app/app.js"></script>
+
+	<!--Services-->
+	<script src="app/services/Octree.js"></script>
+	<script src="app/services/DecoderService.js"></script>
+	<script src="app/services/FileService.js"></script>
+	<script src="app/services/VisUtils.js"></script>
+	<script src="app/services/VisualizationService.js"></script>
+
+	<!--Controllers-->
+	<script src="app/components/AppController.js"></script>
+	<script src="app/components/RenderingController.js"></script>
+
+	<!--THREE.js-->
+	<script src="scripts/OBJLoader.js"></script>
+	<script src="scripts/TypedArrayUtils.js"></script>
+	<script src="scripts/inflate.min.js"></script>
+	<script src="scripts/stats.min.js"></script>
+	<script src="scripts/Detector.js"></script>
+	<script src="scripts/Projector.js"></script>
+	<script src="scripts/CanvasRenderer.js"></script>
+	<script src="scripts/TrackballControls.js"></script>
+	<script src="scripts/OrbitControls.js"></script>
+
+	<!-- Directives -->
+	<script src="scripts/ViewerDirective.js"></script>
+	<script src="app/components/ToolbarDirective.js"></script>
+	<script src="app/components/LoadingBarDirective.js"></script>
+	<script src="app/components/FileLoaderModalDirective.js"></script>
+	<script src="app/components/MeshingModalDirective.js"></script>
+	<script src="app/components/SimModalDirective.js"></script>
+	<script src="app/components/FlowsModalDirective.js"></script>
+	<script src="app/components/ResultsModalDirective.js"></script>
+	<script src="app/components/SimParamsSidebarDirective.js"></script>
+	<script src="app/components/VisualizationSettingsSidebarDirective.js"></script>
+	<script src="app/components/SimSliderDirective.js"></script>
+
+</head>
+
+<body ng-app="SimApp" ng-controller="AppController" style="background-color: #000">
+
+	<!--Top toolbar-->
+	<toolbar></toolbar>
+
+	<!--CANVAS HERE-->
+
+	<div ng-controller="RenderingController">
+
+		<!--Sidebar-->
+		<div id="wrapper" ng-hide="capInfo.length==0" style="z-index: 0">
+			<div id="sidebar-wrapper" class="hover-div">
+
+				<div id="sidebar-nav-wrapper">
+					<ul class="sidebar-nav">
+
+						<li ng-hide="capInfo.length==0">
+							<a href="" data-target="#simParamsSidebarContent">
+								<img class="sidebar-icon" src="assets/img/ico_settings.png"/>
+							</a>
+						</li>
+
+						<li ng-hide="!hasData">
+							<a href="" data-target="#visSettingsSidebarContent">
+								<img class="sidebar-icon" src="assets/img/ico_vis.png"/>
+							</a>
+						</li>
+
+					</ul>
+				</div>
+
+				<!--Simulation parameters sidebar tab-->
+				<sim-params-sidebar toggle-id="simParamsSidebarContent"></sim-params-sidebar>
+
+				<!--Visualization settings sidebar tab-->
+				<visualization-settings toggle-id="visSettingsSidebarContent"></visualization-settings>
+			</div>
+
+		</div>
+
+		<!--The main renderer window-->
+		<div class="renderer">
+			<div class="renderer-container" viewer></div>
+
+			<!--Simulation step slider-->
+			<sim-slider style="z-index: 5"></sim-slider>
+		</div>
+
+	</div>
+
+	<!-- Model upload modal -->
+	<file-loader-modal></file-loader-modal>
+
+	<!--Meshing modal-->
+	<meshing-modal></meshing-modal>
+
+	<!--Simulation modal-->
+	<sim-modal></sim-modal>
+
+	<!--Results list modal-->
+	<results-modal></results-modal>
+
+	<!--Flow files modal-->
+	<flows-modal></flows-modal>
+
+	<!--Loading bar-->
+	<loading-bar></loading-bar>
+
+</body>
+</html>

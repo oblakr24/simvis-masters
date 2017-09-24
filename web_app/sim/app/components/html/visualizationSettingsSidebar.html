@@ -1,0 +1,273 @@
+<span>
+    <div class="sidebar-content-title">
+      Visualization settings
+    </div>
+
+    <!--<div class="sidebar-content" style="padding-right: 30px;">-->
+	<div class="sidebar-content" style="
+        padding-right: 30px;
+        height: 670px;
+        overflow-y:scroll;
+        overflow-x:hidden;
+        ">
+
+        <div class="list-group" style="padding: 5px 10px 10px 20px;">
+
+			<!--Pressure-->
+			<div class="row" style="margin-bottom: 5px">
+			  <div class="col-sm-2">
+				<img class="sidebar-icon-black-bg" src="assets/img/ico_vis.png" ng-hide="!visParams.showPressures" ng-click="togglePressures()"/>
+				  <img class="sidebar-icon-black-bg" src="assets/img/ico_vis_off.png" ng-hide="visParams.showPressures" ng-click="togglePressures()"/>
+			  </div>
+			  <div class="col-sm-10">
+				<label style="font-size: medium; font-weight: 600; color: #ddd;">Pressure</label>
+			  </div>
+			</div>
+
+			<div class="row" style="margin-bottom: 10px; margin-left: 30px;">
+			  <div class="col-sm-12">
+				  <form name="myForm" >
+				  <label style="font-size: small; font-weight: 600; color: #ddd;">
+					<input type="radio" ng-model="visParams.pressureDispType" value="magnitude" style="margin-right: 5px" ng-change='updateVisibility()'>
+					Magnitude
+				  </label><br/>
+				  <label style="font-size: small; font-weight: 600; color: #ddd;">
+					<input type="radio" ng-model="visParams.pressureDispType" value="surface" style="margin-right: 5px" ng-change='updateVisibility()'>
+					Surface
+				  </label><br/>
+				 </form>
+			  </div>
+			</div>
+
+			<!--Velocity-->
+			<div class="row" style="margin-bottom: 5px">
+			  <div class="col-sm-2">
+				<img class="sidebar-icon-black-bg" src="assets/img/ico_vis.png" ng-hide="!visParams.showVelocities" ng-click="toggleVelocities()"/>
+				  <img class="sidebar-icon-black-bg" src="assets/img/ico_vis_off.png" ng-hide="visParams.showVelocities" ng-click="toggleVelocities()"/>
+			  </div>
+			  <div class="col-sm-10">
+				<label style="font-size: medium; font-weight: 600; color: #ddd;">Velocity</label>
+			  </div>
+			</div>
+
+			<div class="row" style="margin-bottom: 10px; margin-left: 30px;">
+			  <div class="col-sm-12">
+				  <form name="myForm" >
+				  <label style="font-size: small; font-weight: 600; color: #ddd;">
+					<input type="radio" ng-model="visParams.velocityDispType" value="magnitude" style="margin-right: 5px" ng-change='updateVisibility()'>
+					Magnitude
+				  </label><br/>
+				  <label style="font-size: small; font-weight: 600; color: #ddd;">
+					<input type="radio" ng-model="visParams.velocityDispType" value="vector" style="margin-right: 5px" ng-change='updateVisibility()'>
+					Vector
+				  </label><br/>
+				  <label style="font-size: small; font-weight: 600; color: #ddd;">
+					<input type="radio" ng-model="visParams.velocityDispType" value="surface" style="margin-right: 5px" ng-change='updateVisibility()'>
+					Surface
+				  </label><br/>
+				 </form>
+			  </div>
+			</div>
+
+			<!--Time-derivative-->
+			<div class="row" style="margin-bottom: 5px">
+			  <div class="col-sm-2">
+				<img class="sidebar-icon-black-bg" src="assets/img/ico_vis.png" ng-hide="!visParams.showDerivatives" ng-click="toggleDerivatives()"/>
+				  <img class="sidebar-icon-black-bg" src="assets/img/ico_vis_off.png" ng-hide="visParams.showDerivatives" ng-click="toggleDerivatives()"/>
+			  </div>
+			  <div class="col-sm-10">
+				<label style="font-size: medium; font-weight: 600; color: #ddd;">Time derivative</label>
+			  </div>
+			</div>
+
+			<div class="row" style="margin-bottom: 10px; margin-left: 30px;">
+			  <div class="col-sm-12">
+				  <form name="myForm" >
+				  <label style="font-size: small; font-weight: 600; color: #ddd;">
+					<input type="radio" ng-model="visParams.derivativeDispType" value="magnitude" style="margin-right: 5px" ng-change='updateVisibility()'>
+					Magnitude
+				  </label><br/>
+				  <label style="font-size: small; font-weight: 600; color: #ddd;">
+					<input type="radio" ng-model="visParams.derivativeDispType" value="vector" style="margin-right: 5px" ng-change='updateVisibility()'>
+					Vector
+				  </label><br/>
+				  <label style="font-size: small; font-weight: 600; color: #ddd;">
+					<input type="radio" ng-model="visParams.derivativeDispType" value="surface" style="margin-right: 5px" ng-change='updateVisibility()'>
+					Surface
+				  </label><br/>
+				 </form>
+			  </div>
+			</div>
+
+			<!--Wall shear stress-->
+			<div class="row" style="margin-bottom: 5px">
+			  <div class="col-sm-2">
+				<img class="sidebar-icon-black-bg" src="assets/img/ico_vis.png" ng-hide="!visParams.showStresses" ng-click="toggleStresses()"/>
+				  <img class="sidebar-icon-black-bg" src="assets/img/ico_vis_off.png" ng-hide="visParams.showStresses" ng-click="toggleStresses()"/>
+			  </div>
+			  <div class="col-sm-10">
+				<label style="font-size: medium; font-weight: 600; color: #ddd;">Wall shear stress</label>
+			  </div>
+			</div>
+
+			<div class="row" style="margin-bottom: 10px; margin-left: 30px;">
+			  <div class="col-sm-12">
+				  <form name="myForm" >
+				  <label style="font-size: small; font-weight: 600; color: #ddd;">
+					<input type="radio" ng-model="visParams.stressDispType" value="magnitude" style="margin-right: 5px" ng-change='updateVisibility()'>
+					Magnitude
+				  </label><br/>
+				  <label style="font-size: small; font-weight: 600; color: #ddd;">
+					<input type="radio" ng-model="visParams.stressDispType" value="surface" style="margin-right: 5px" ng-change='updateVisibility()'>
+					Surface
+				  </label><br/>
+				 </form>
+			  </div>
+			</div>
+
+			<!--In-plane traction-->
+			<div class="row" style="margin-bottom: 5px">
+			  <div class="col-sm-2">
+				<img class="sidebar-icon-black-bg" src="assets/img/ico_vis.png" ng-hide="!visParams.showTractions" ng-click="toggleTractions()"/>
+				  <img class="sidebar-icon-black-bg" src="assets/img/ico_vis_off.png" ng-hide="visParams.showTractions" ng-click="toggleTractions()"/>
+			  </div>
+			  <div class="col-sm-10">
+				<label style="font-size: medium; font-weight: 600; color: #ddd;">In-plane traction</label>
+			  </div>
+			</div>
+
+			<div class="row" style="margin-bottom: 10px; margin-left: 30px;">
+			  <div class="col-sm-12">
+				  <form name="myForm" >
+				  <label style="font-size: small; font-weight: 600; color: #ddd;">
+					<input type="radio" ng-model="visParams.tractionDispType" value="magnitude" style="margin-right: 5px" ng-change='updateVisibility()'>
+					Magnitude
+				  </label><br/>
+				  <label style="font-size: small; font-weight: 600; color: #ddd;">
+					<input type="radio" ng-model="visParams.tractionDispType" value="surface" style="margin-right: 5px" ng-change='updateVisibility()'>
+					Surface
+				  </label><br/>
+				 </form>
+			  </div>
+			</div>
+
+			<!--Mesh-->
+			<div class="row" style="margin-bottom: 5px">
+			  <div class="col-sm-2">
+				<img class="sidebar-icon-black-bg" src="assets/img/ico_vis.png" ng-hide="!visParams.showMesh" ng-click="toggleMesh()"/>
+				  <img class="sidebar-icon-black-bg" src="assets/img/ico_vis_off.png" ng-hide="visParams.showMesh" ng-click="toggleMesh()"/>
+			  </div>
+			  <div class="col-sm-10">
+				<label style="font-size: medium; font-weight: 600; color: #ddd;">Mesh</label>
+			  </div>
+			</div>
+
+			<!--Inlet streamlines-->
+			<div class="row" style="margin-bottom: 5px">
+			  <div class="col-sm-2">
+				<img class="sidebar-icon-black-bg" src="assets/img/ico_vis.png" ng-hide="!visParams.showStreamlinesIn" ng-click="toggleStreamlinesIn()"/>
+				  <img class="sidebar-icon-black-bg" src="assets/img/ico_vis_off.png" ng-hide="visParams.showStreamlinesIn" ng-click="toggleStreamlinesIn()"/>
+			  </div>
+			  <div class="col-sm-10">
+				<label style="font-size: medium; font-weight: 600; color: #ddd;">Inlet streamlines</label>
+			  </div>
+			</div>
+
+			<!--Outlet streamlines-->
+			<div class="row" style="margin-bottom: 5px">
+			  <div class="col-sm-2">
+				<img class="sidebar-icon-black-bg" src="assets/img/ico_vis.png" ng-hide="!visParams.showStreamlinesOut" ng-click="toggleStreamlinesOut()"/>
+				  <img class="sidebar-icon-black-bg" src="assets/img/ico_vis_off.png" ng-hide="visParams.showStreamlinesOut" ng-click="toggleStreamlinesOut()"/>
+			  </div>
+			  <div class="col-sm-10">
+				<label style="font-size: medium; font-weight: 600; color: #ddd;">Outlet streamlines</label>
+			  </div>
+			</div>
+
+			<!--Options-->
+			<div class="row" style="margin-bottom: 5px; margin-top: 10px; text-align: left;">
+			  <div class="col-sm-12">
+				<label style="font-size: medium; font-weight: 600; color: #ddd;">Options</label>
+			  </div>
+			</div>
+
+			<!--Point scale factor-->
+			<div class="row" style="margin-bottom: 10px; text-align: center;">
+			  <div class="col-sm-12">
+				<label style="font-size: small; font-weight: 600; color: #ddd;">Point scale attenuation</label>
+			  </div>
+			</div>
+
+			<div class="row" style="margin-bottom: 10px">
+			  <div class="col-sm-2">
+
+			  </div>
+			  <div class="col-sm-8">
+			  	<rzslider class="custom-slider" rz-slider-model="pointSlider.value" rz-slider-options="pointSlider.options"></rzslider>
+			  </div>
+			  <div class="col-sm-2">
+
+			  </div>
+			</div>
+
+			<!--Point scale factor-->
+			<div class="row" style="margin-bottom: 10px; text-align: center;">
+			  <div class="col-sm-12">
+				<label style="font-size: small; font-weight: 600; color: #ddd;">Point scale</label>
+			  </div>
+			</div>
+
+			<div class="row" style="margin-bottom: 10px">
+			  <div class="col-sm-2">
+
+			  </div>
+			  <div class="col-sm-8">
+			  	<rzslider class="custom-slider" rz-slider-model="pointScaleSlider.value" rz-slider-options="pointScaleSlider.options"></rzslider>
+			  </div>
+			  <div class="col-sm-2">
+
+			  </div>
+			</div>
+
+			<!--Mesh opacity-->
+			<div class="row" style="margin-bottom: 10px; text-align: center;">
+			  <div class="col-sm-12">
+				<label style="font-size: small; font-weight: 600; color: #ddd;">Mesh opacity</label>
+			  </div>
+			</div>
+
+			<div class="row" style="margin-bottom: 10px">
+			  <div class="col-sm-2">
+
+			  </div>
+			  <div class="col-sm-8">
+			  	<rzslider class="custom-slider" rz-slider-model="opacitySlider.value" rz-slider-options="opacitySlider.options"></rzslider>
+			  </div>
+			  <div class="col-sm-2">
+
+			  </div>
+			</div>
+
+			<!--Line width-->
+			<div class="row" style="margin-bottom: 10px; text-align: center;">
+			  <div class="col-sm-12">
+				<label style="font-size: small; font-weight: 600; color: #ddd;">Line width</label>
+			  </div>
+			</div>
+
+			<div class="row" style="margin-bottom: 10px">
+			  <div class="col-sm-2">
+
+			  </div>
+			  <div class="col-sm-8">
+			  	<rzslider class="custom-slider" rz-slider-model="lineWidthSlider.value" rz-slider-options="lineWidthSlider.options"></rzslider>
+			  </div>
+			  <div class="col-sm-2">
+
+			  </div>
+			</div>
+
+        </div>
+
+    </div>
+</span>

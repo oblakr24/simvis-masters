@@ -1,0 +1,55 @@
+<span>
+    <div class="sidebar-content-title">
+      Inlet/outlet parameters
+    </div>
+
+    <div class="sidebar-content" style="
+        padding-right: 5px;
+        height: 728px;
+        overflow-y:scroll;
+        overflow-x:hidden;
+        ">
+        <div class="list-group" style="-webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none;">
+
+            <div class="list-group-item sidebar-cap-item" ng-repeat="cap in capInfo"
+                 ng-class="{'sidebar-cap-item-active' : cap.capIdx === sharedParams.capIdx || cap.capIdx === sharedParams.hlCapIdx}" ng-click="selectCap(cap)">
+
+                    <div class="row">
+                      <div class="col-sm-6" style=" margin-bottom: 3px;">
+                          <label style="font-size: medium; font-weight: 600; color: #000;">Cap {{cap.capIdx}} ({{cap.isInlet ? "Inlet" : "Outlet"}})</label>
+                          </div>
+                      <!--<div class="col-sm-4"></div>-->
+                      <div class="col-sm-4 checkbox" style="margin-top: 0px; margin-bottom: 5px;">
+                          <label><input type="checkbox" ng-model="cap.isInlet">Inlet</label>
+                      </div>
+                      <div class="col-sm-2 checkbox" style="margin-top: 0px; margin-bottom: 5px; padding-right: 23px">
+                          <img class="sidebar-icon-gray-bg right" src="assets/img/ico_vis.png" ng-click="highlightCap(cap)"/>
+                      </div>
+                    </div>
+
+                    <div class="row" style=" margin-bottom: 5px;">
+                      <div class="col-sm-6">
+                          <label style="font-size: small; color: #333;">Resistance (dynes·s/cm^2)</label>
+                      </div>
+                      <div class="col-sm-6" style="padding-top: 5px;">
+                          <label style="font-size: small; color: #333;">Flow rate</label>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-sm-4">
+                          <input type="number" class="form-control" ng-model="cap.resistance">
+                      </div>
+                      <div class="col-sm-5" style="margin-top: 0px; padding: 0px; text-align: center;">
+                          <label style="font-size: small; color: #555; text-align: right;">{{cap.flow.filename == null ? "No flow set" : cap.flow.filename}}</label>
+                      </div>
+                      <div class="col-sm-3">
+                          <button id="loadFlowButton" type="button" class="btn med3d-btn-primary" ng-disabled="false" disabled="disabled" ng-attr-data-toggle="{{ 'modal' }}" data-target="#flowsModal">Set</button>
+                      </div>
+                    </div>
+
+            </div>
+
+        </div>
+    </div>
+</span>

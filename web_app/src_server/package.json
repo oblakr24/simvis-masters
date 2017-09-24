@@ -1,0 +1,19 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Med3D server",
+  "main": "Server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular-animate": "^1.6.4",
+    "express": "^4.13.4",
+    "multer": "^1.3.0",
+    "socketio-wildcard": "^2.0.0",
+    "vtk.js": "^3.0.0"
+  }
+}
